@@ -1,0 +1,21 @@
+/* Default body style */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", serif;
+}
+
+/* Background for login/register page */
+.login-register {
+  background: url('../src/Components/Assests/wallpaper.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background for admin page */
+.admin-page {
+  background-color: #1d2634; /* Specific admin panel color */
+}
