@@ -16,7 +16,7 @@ function PageContent() {
         <div className={`App ${getPageClass()}`}>
             <Routes>
                 <Route path="/login" element={<LoginRegister />} />
-                <Route path="/admin" element={<Admin />} />
+                <Route path="/admin/*" element={<Admin />} />
             </Routes>
         </div>
     );
