@@ -4,7 +4,9 @@ import './Admin.css'
 const Students = () => {
   return (
     <div className='main-container'>
-      Student section
+      <div className="main-title">
+        List of Enrolled Students
+      </div>
     </div>
   )
 }
