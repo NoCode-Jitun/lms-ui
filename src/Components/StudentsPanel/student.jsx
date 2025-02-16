@@ -1,6 +1,23 @@
-// student.jsx
 import React, { useState } from "react";
 import "./student.css";
+
+const ExamForm = () => {
+  return (
+    <div className="exam-form">
+      <h2>Enter Exam Details</h2>
+      <form>
+        <input type="text" placeholder="Enter Exam Name" />
+        <input type="text" placeholder="Enter Subject Name" />
+        <input type="text" placeholder="Enter Your Class" />
+        <input type="text" placeholder="Enter Full Name" />
+        <input type="text" placeholder="Enter School Name" />
+        <input type="text" placeholder="Enter School ID" />
+        <input type="datetime-local" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
 const StudentDashboard = () => {
   const [activePage, setActivePage] = useState("My Dashboard");
@@ -44,16 +61,20 @@ const StudentDashboard = () => {
         </aside>
 
         <main className="student-profile">
-          <div className="profile-card">
-            <img className="avatar" src="https://cdn-icons-png.flaticon.com/512/7981/7981269.png" alt="Profile" />
-            <h2>kishore <span className="student-id">(ST0065)</span></h2>
-            <div className="stats">
-              <div className="stat wallet">💰 0 Wallet Amount</div>
-              <div className="stat inbox">📩 6 Inbox</div>
-              <div className="stat exams">📑 28 Exams</div>
+          {activePage === "My Exams" ? (
+            <ExamForm />
+          ) : (
+            <div className="profile-card">
+              <img className="avatar" src="https://cdn-icons-png.flaticon.com/512/7981/7981269.png" alt="Profile" />
+              <h2>kishore <span className="student-id">(ST0065)</span></h2>
+              <div className="stats">
+                <div className="stat wallet">💰 0 Wallet Amount</div>
+                <div className="stat inbox">📩 6 Inbox</div>
+                <div className="stat exams">📑 28 Exams</div>
+              </div>
+              <button className="buy-packages">+ Access New Exams</button>
             </div>
-            <button className="buy-packages">+ Access New Exams</button>
-          </div>
+          )}
         </main>
       </div>
     </div>

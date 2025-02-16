@@ -79,7 +79,7 @@
     padding: 30px;
   }
   
-  .profile-card {
+  .profile-card, .exam-form {
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -108,7 +108,7 @@
     text-align: center;
   }
   
-  .buy-packages {
+  .buy-packages, .exam-form button {
     background: #007bff;
     color: white;
     padding: 12px 15px;
@@ -117,8 +117,20 @@
     cursor: pointer;
   }
   
-  .buy-packages:hover {
+  .buy-packages:hover, .exam-form button:hover {
     background: #0056b3;
+  }
+  
+  .exam-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .exam-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
   @media (max-width: 768px) {
@@ -131,4 +143,3 @@
       text-align: center;
     }
   }
-  
