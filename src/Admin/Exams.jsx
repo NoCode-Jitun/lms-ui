@@ -1,96 +1,174 @@
-import React from "react";
-import "./Admin.css";
-import { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
+import './exam.css';
 
-const Exams = () => {
-  const [file, setFile] = useState();
+const BACKEND_API_URL = 'https://augmentatech.in/api';
 
-  function handleFile(event) {
-    setFile(event.target.files[0]);
-  }
+const Exam = () => {
+    const [formData, setFormData] = useState({
+        school_id: '',
+        name: '',
+        start_time: '',
+        end_time: '',
+        questions: [{ id: '', marks: '' }],
+    });
 
-  //handleUpload *BACKEND*
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-  return (
-    <div className="main-container">
-      <div className="main-title">
-        <h3>ADD NEW EXAM</h3>
-      </div>
+    const handleQuestionChange = (index, e) => {
+        const { name, value } = e.target;
+        const newQuestions = [...formData.questions];
+        newQuestions[index][name] = value;
+        setFormData({ ...formData, questions: newQuestions });
+    };
 
-      <div className="form-add exams">
-        <form action="">
-          <div className="addBox">
-            Exam Name: <input type="text" placeholder="Exam Name" required />
-          </div>
+    const addQuestionField = () => {
+        setFormData({
+            ...formData,
+            questions: [...formData.questions, { id: '', marks: '' }],
+        });
+    };
 
-          <div className="addBox">
-            Course Name:{" "}
-            <input type="text" placeholder="Course Name" required />
-          </div>
+    const removeQuestionField = (index) => {
+        const newQuestions = formData.questions.filter((_, i) => i !== index);
+        setFormData({ ...formData, questions: newQuestions });
+    };
 
-          <div className="uploadBox">
-            Upload Questions:
-            <input type="file" name="file" onChange={handleFile} />
-            <button className="up2">Upload</button>
-          </div>
-            <div className="submitButton">
-            <button className="submit1">Add</button>
-            </div>
-          
-        </form>
-      </div>
-        <br />
-        <br />
-      <div className="main-title">
-        <h2>List of Exams Created</h2>
-      </div>
-      <div className="listExams">
-        <table>
-            <tr>
-                <th>Name of the Exam</th>
-                <th>Course</th>
-                <th>No. of Students Enrolled</th>
-            </tr>
-            <tr>
-                <td>Examination 1</td>
-                <td>Course 1</td>
-                <td>19</td>
-            </tr>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-            <tr>
-                <td>Examination 2</td>
-                <td>Course 2</td>
-                <td>21</td>
-            </tr>
-            <tr>
-                <td>Examination 3</td>
-                <td>Course 3</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>Examination 15</td>
-                <td>Course 5</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>Examination 11</td>
-                <td>Course 12</td>
-                <td>190</td>
-            </tr>
-            <tr>
-                <td>Examination 10</td>
-                <td>Course 22</td>
-                <td>119</td>
-            </tr>
-            <tr>
-                <td>Examination 177</td>
-                <td>Course 8</td>
-                <td>33</td>
-            </tr>
-        </table>
-      </div>
-    </div>
-  );
+        // token
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("Authentication error: Please log in again.");
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${BACKEND_API_URL}/exams/create`, 
+                formData, 
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            alert('Exam created successfully!');
+            console.log(response.data);
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                alert("Session expired. Please log in again.");
+                
+            } else {
+                alert('Failed to create exam. Please check the fields.');
+            }
+            console.error(error);
+        }
+    };
+
+    return (
+        <div className="create-exam-container">
+            <h1>Create Exam</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>School ID</label>
+                    <input
+                        type="number"
+                        name="school_id"
+                        value={formData.school_id}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Exam Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Start Time</label>
+                    <input
+                        type="datetime-local"
+                        name="start_time"
+                        value={formData.start_time}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>End Time</label>
+                    <input
+                        type="datetime-local"
+                        name="end_time"
+                        value={formData.end_time}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="questions-section">
+                    <h3>Questions</h3>
+                    {formData.questions.map((question, index) => (
+                        <div key={index} className="question-group">
+                            <div className="form-group">
+                                <label>Question ID</label>
+                                <input
+                                    type="number"
+                                    name="id"
+                                    value={question.id}
+                                    onChange={(e) => handleQuestionChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Marks</label>
+                                <input
+                                    type="number"
+                                    name="marks"
+                                    value={question.marks}
+                                    onChange={(e) => handleQuestionChange(index, e)}
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                className="remove-question-btn"
+                                onClick={() => removeQuestionField(index)}
+                            >
+                                Remove
+                            </button>
+                        </div>
+                    ))}
+                    <button
+                        type="button"
+                        className="add-question-btn"
+                        onClick={addQuestionField}
+                    >
+                        Add Question
+                    </button>
+                </div>
+
+                <button type="submit" className="submit-btn">
+                    Create Exam
+                </button>
+            </form>
+        </div>
+    );
 };
 
-export default Exams;
+export default Exam;

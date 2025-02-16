@@ -1,246 +1,304 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .login-register {
-    background: url('../Assests/wallpaper.jpg') no-repeat;
-    background-size: cover;
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Left Section */
+.branding {
+  width: 50%;
+  background: #160055;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.branding .logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.branding h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.branding p {
+  font-size: 18px;
+}
+
+/* Right Form Section */
+
+
+.login-register {
+  /*check app.css for background color*/
   background-size: cover;
-  background-position: center;
-    margin: 0;
-    font-family: "Poppins", serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
+background-size: cover;
+background-position: center;
   
+  font-family: "Poppins", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
 }
 
 .wrapper{
-    position: relative;
-    width: 420px;
-    height: 450px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .1);
-    backdrop-filter: blur(30px);
-    box-shadow: rgba(255, 255, 255, .2);
-    border-radius: 10px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    height: transition .2s ease;
-    overflow: hidden;
+  position: relative;
+  width: 420px;
+  height: 450px;
+  background: transparent;
+  border: 2px solid #160055;
+  backdrop-filter: blur(30px);
+  box-shadow: rgba(255, 255, 255, .2);
+  border-radius: 10px;
+  color: #160055;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px;
+  margin-left: 190px;
+  margin-right: 190px;
+  height: transition .2s ease;
+  overflow: hidden;
 }
 
 .wrapper.active{
-    height: 520px;
+  height: 620px;
 }
 
 .wrapper .form-box{
-    width: 100%;
-    padding: 40px;
+  width: 100%;
+  padding: 40px;
 }
 
 .wrapper .form-box.register{
-    position: absolute;
-    translate: 400px;
-    transition: none;
-    
+  position: absolute;
+  translate: 400px;
+  transition: none;
+  
 }
 
 .wrapper .form-box.login{
-    transition: translate .18s ease;
-    translate: 0;
+  transition: translate .18s ease;
+  translate: 0;
 }
 
 /* login register */
 
 .wrapper.active .form-box.login{
-    transition: none;
-    translate: -400px;
+  transition: none;
+  translate: -400px;
 }
 
 .wrapper.active .form-box.register{
-    transition: translate .18s ease;
-    translate: 0;
+  transition: translate .18s ease;
+  translate: 0;
 }
 
 form h1{
-    font-size: 36px;
-    text-align: center;
+  font-size: 36px;
+  text-align: center;
 }
 
 form .inputBox{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
 }
 .inputBox input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .1);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid #160055;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #160055;
+  padding: 20px 45px 20px 20px;
 }
 
 .inputBox input::placeholder{
-    color: #fff;
+  color: #160055;
 }
 .inputBox .icon{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    translate: 0 -50%;
-    font-size: 16px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 16px;
 
 }
 
 form .rememberForgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
 }
 .rememberForgot label input{
-    color: #fff;
-    margin-right: 4px;
+  color: #160055;
+  margin-right: 4px;
 }
 
 .rememberForgot a{
-    color: #fff;
-    text-decoration: none;
+  color: #160055;
+  text-decoration: none;
 }
 
 .rememberForgot a:hover{
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 form button{
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, .1);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    color: #333;
+  width: 100%;
+  height: 45px;
+  background: #160055;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, .1);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
 }
 
 form .registerLink{
-    font-size: 14.5px;
-    margin: 20px 0 15px;
-    text-align: center;
+  font-size: 14.5px;
+  margin: 20px 0 15px;
+  text-align: center;
 }
 
 .registerLink p a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+  color: #160055;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .registerLink p a:hover{
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Media Queries for Responsiveness */
 
 /* Tablets (max-width: 768px) */
 @media screen and (max-width: 768px) {
-    .wrapper {
-      width: 90%;
-      height: auto;
-      padding: 20px;
-    }
-  
-    form h1 {
-      font-size: 28px;
-    }
-  
-    .inputBox {
-      height: 45px;
-      margin: 20px 0;
-    }
-  
-    .inputBox input {
-      font-size: 14px;
-      padding: 15px 40px 15px 15px;
-    }
-  
-    .inputBox .icon {
-      font-size: 14px;
-    }
-  
-    form button {
-      height: 40px;
-      font-size: 14px;
-    }
-  
-    form .registerLink {
-      font-size: 12px;
-    }
-  
-    .rememberForgot {
-      font-size: 12px;
-    }
+
+  .container {
+    flex-direction: column; /* Stack elements */
+    height: auto;
   }
-  
-  /* Mobile Phones (max-width: 576px) */
-  @media screen and (max-width: 576px) {
-    .wrapper {
-      width: 100%;
-      margin: 10px;
-      border-radius: 5px;
-      padding: 15px;
-    }
-  
-    form h1 {
-      font-size: 24px;
-    }
-  
-    .inputBox {
-      height: 40px;
-      margin: 15px 0;
-    }
-  
-    .inputBox input {
-      font-size: 13px;
-      padding: 12px 35px 12px 12px;
-    }
-  
-    .inputBox .icon {
-      font-size: 12px;
-    }
-  
-    form button {
-      height: 35px;
-      font-size: 12px;
-    }
-  
-    form .registerLink {
-      font-size: 11px;
-    }
-  
-    .rememberForgot {
-      font-size: 11px;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .rememberForgot label {
-      margin-bottom: 5px;
-    }
+
+  .branding {
+    width: 100%;
+    order: 2; /* Move branding below */
+    padding: 30px;
   }
+
+  .login-register {
+    width: 100%;
+    order: 1; /* Form comes first */
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .wrapper {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  form h1 {
+    font-size: 28px;
+  }
+
+  .inputBox {
+    height: 45px;
+    margin: 20px 0;
+  }
+
+  .inputBox input {
+    font-size: 14px;
+    padding: 15px 40px 15px 15px;
+  }
+
+  .inputBox .icon {
+    font-size: 14px;
+  }
+
+  form button {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  form .registerLink {
+    font-size: 12px;
+  }
+
+  .rememberForgot {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Phones (max-width: 576px) */
+@media screen and (max-width: 576px) {
+  .wrapper {
+    width: 100%;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  form h1 {
+    font-size: 24px;
+  }
+
+  .inputBox {
+    height: 40px;
+    margin: 15px 0;
+  }
+
+  .inputBox input {
+    font-size: 13px;
+    padding: 12px 35px 12px 12px;
+  }
+
+  .inputBox .icon {
+    font-size: 12px;
+  }
+
+  form button {
+    height: 35px;
+    font-size: 12px;
+  }
+
+  form .registerLink {
+    font-size: 11px;
+  }
+
+  .rememberForgot {
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rememberForgot label {
+    margin-bottom: 5px;
+  }
+}
