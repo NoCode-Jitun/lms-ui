@@ -6,7 +6,7 @@ import Sidebar from './Sidebar'
 import Home from './Home'
 import Exams from './Exams'
 import Students from './Students'
-import Courses from './Courses'
+import AddSubject from './Courses';
 
 function Admin() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -26,7 +26,7 @@ function Admin() {
             <Route path="/dashboard" element={<Home />} />
             <Route path="/exams" element={<Exams />} />
             <Route path="/students" element={<Students />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/subjects" element={<AddSubject />} />
           </Routes>
         
 

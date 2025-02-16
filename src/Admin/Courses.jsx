@@ -1,78 +1,83 @@
-import React from 'react'
-import './Admin.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './Admin.css';
+const BACKEND_API_URL = 'https://augmentatech.in/api';
 
-const Courses = () => {
-  return (
-    <div className="main-container">
-    <div className="main-title">
-      <h3>ADD NEW COURSE</h3>
-    </div>
+const AddSubject = () => {
+    const [formData, setFormData] = useState({
+        school_id: '',
+        name: '',
+        status: 1, // Default status is 1 (active)
+    });
 
-    <div className="form-add exams">
-      <form action="">
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-        <div className="addBox">
-          New Course Name:{" "}
-          <input type="text" placeholder="Course Name" required />
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(`${BACKEND_API_URL}/subjects`, formData);
+            alert('Subject added successfully!');
+            console.log(response.data);
+            // Reset form after successful submission
+            setFormData({
+                school_id: '',
+                name: '',
+                status: 1,
+            });
+        } catch (error) {
+            alert('Failed to add subject. Please check the fields.');
+            console.error(error);
+        }
+    };
+
+    return (
+        <div className="add-subject-container">
+            <h1>Add Subject</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>School ID</label>
+                    <input
+                        type="number"
+                        name="school_id"
+                        value={formData.school_id}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Subject Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Status</label>
+                    <select
+                        name="status"
+                        value={formData.status}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value={1}>Active</option>
+                        <option value={0}>Inactive</option>
+                    </select>
+                </div>
+
+                <button type="submit" className="submit-btn">
+                    Add Subject
+                </button>
+            </form>
         </div>
-        <div className="submitButton">
-            <button className="submit1">Add</button>
-            </div>
-        </form>
-        </div>
-        <br />
-        <br/>
-        <div className="main-title">
-        <h2>List of Exams Created</h2>
-      </div>
-      <div className="listExams">
-        <table>
-            <tr>
-                
-                <th>Course Name</th>
-                <th>No. of Students Enrolled</th>
-            </tr>
-            <tr>
-             
-                <td>Course 1</td>
-                <td>19</td>
-            </tr>
+    );
+};
 
-            <tr>
-                
-                <td>Course 2</td>
-                <td>21</td>
-            </tr>
-            <tr>
-                <td>Course 3</td>
-                <td>9</td>
-            </tr>
-            <tr>
-               
-                <td>Course 5</td>
-                <td>9</td>
-            </tr>
-            <tr>
-               
-                <td>Course 12</td>
-                <td>190</td>
-            </tr>
-            <tr>
-                
-                <td>Course 22</td>
-                <td>119</td>
-            </tr>
-            <tr>
-                
-                <td>Course 8</td>
-                <td>33</td>
-            </tr>
-        </table>
-      </div>
-
-
-        </div>
-  )
-}
-
-export default Courses
+export default AddSubject;

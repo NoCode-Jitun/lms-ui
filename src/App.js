@@ -1,8 +1,8 @@
 import Admin from './Admin/Admin';
 import './App.css';
 import LoginRegister from './Components/LoginRegister/loginRegister';
-import Student from './Components/StudentsPanel/studentpanel';
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import StudentPanel from './Components/StudentsPanel/student';
 
 function PageContent() {
     const location = useLocation();
@@ -10,7 +10,6 @@ function PageContent() {
     const getPageClass = () => {
         if (location.pathname === '/login') return 'login-register';
         if (location.pathname === '/admin') return 'admin-page';
-        if (location.pathname === '/student') return 'student-page';
         return '';
     };
 
@@ -19,7 +18,7 @@ function PageContent() {
             <Routes>
                 <Route path="/login" element={<LoginRegister />} />
                 <Route path="/admin/*" element={<Admin />} />
-                <Route path="/student/*" element={<Student />} />
+                <Route path="/students" element={<StudentPanel/>} />
             </Routes>
         </div>
     );
