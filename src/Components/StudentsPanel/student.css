@@ -1,0 +1,134 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #002244;
+    color: white;
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .logo span {
+    color: orange;
+  }
+  
+  .top-bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .logout {
+    background: white;
+    color: #002244;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+  
+  .student-menu {
+    background: #002244;
+    color: white;
+    padding: 25px;
+    width: 280px;
+  }
+  
+  .student-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .student-menu li {
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .student-menu li:hover, .student-menu li.active {
+    background: #ffffff;
+    color: #002244;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .student-profile {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .avatar {
+    width: 120px;
+    border-radius: 50%;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .stat {
+    background: #ddd;
+    padding: 12px;
+    border-radius: 5px;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .buy-packages {
+    background: #007bff;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-packages:hover {
+    background: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column;
+      height: auto;
+    }
+    .student-menu {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

@@ -2,7 +2,7 @@ import Admin from './Admin/Admin';
 import './App.css';
 import LoginRegister from './Components/LoginRegister/loginRegister';
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import StudentPanel from './Components/StudentsPanel/student';
+import StudentDashboard from './Components/StudentsPanel/student';
 
 function PageContent() {
     const location = useLocation();
@@ -18,7 +18,7 @@ function PageContent() {
             <Routes>
                 <Route path="/login" element={<LoginRegister />} />
                 <Route path="/admin/*" element={<Admin />} />
-                <Route path="/students" element={<StudentPanel/>} />
+                <Route path="/students" element={<StudentDashboard />} />
             </Routes>
         </div>
     );
